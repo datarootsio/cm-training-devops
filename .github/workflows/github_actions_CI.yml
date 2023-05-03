@@ -18,11 +18,11 @@ jobs:
           pre-commit install
           pre-commit run
 
-    test-python:
-      runs-on: ubuntu-latest
-      steps:
-        - name: testing
-          run:
-            pip install poetry==1.1.13
-            poetry install
-            pytest run
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing
+        run:
+          pip install poetry==1.1.13
+          poetry install
+          pytest run
