@@ -21,4 +21,4 @@ jobs:
           - name: 'Build Inventory Image'
             run: |
               docker build . --tag ghcr.io/liebrechtds/store:latest
-              docker push ghcr.io/liebrechtds/store:latest
+              docker push ghcr.io/liebrechtds/store:latest --password-stdin
