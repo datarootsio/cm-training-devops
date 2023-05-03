@@ -5,7 +5,7 @@ jobs:
   lint-python:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: set up python
         uses: actions/setup-python@v2
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: testing
-        run:
+        run: |
           pip install poetry==1.1.13
           poetry install
           pytest run
