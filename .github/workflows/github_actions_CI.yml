@@ -34,4 +34,4 @@ jobs:
           pip install poetry
           poetry config virtualenvs.create false
           poetry install
-          pytest ./tests
+          pytest ./tests --cov=./ --cov-report=xml
