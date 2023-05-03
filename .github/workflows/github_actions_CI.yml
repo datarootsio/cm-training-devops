@@ -1,7 +1,28 @@
-name: demo
+name: "pr-checks"
 on: [push]
+
 jobs:
-  Print_Hello_world:
+  lint-python:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello world"
+      - uses: action/checkout@v2
+
+      - name: set up python
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.9
+
+      - name: voer pre-commit uit
+        run:
+          pip install pre-commit==2.13.0
+          pre-commit install
+          pre-commit run
+
+    test-python:
+      runs-on: ubuntu-latest
+      steps:
+        - name: testing
+          run:
+            pip install poetry==1.1.13
+            poetry install
+            pytest run
