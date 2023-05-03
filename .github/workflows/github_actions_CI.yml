@@ -1,0 +1,37 @@
+name: "pr-checks"
+on: [push]
+
+jobs:
+  lint-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+            python-version: '3.10'
+
+      - name: voer pre-commit uit
+        run: |
+          pip install pre-commit==2.13.0
+          pre-commit install
+          pre-commit run
+
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: testing
+        run: |
+          cd ./math_api
+          pip install poetry
+          poetry config virtualenvs.create false
+          poetry install
+          pytest ./tests
